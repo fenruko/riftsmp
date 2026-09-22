@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rift SMP — Constitution</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #000000;
+    --fg: #e6e6e6;
+    --muted: #888888;
+    --line: #2a2a2a;
+    --mono: "Courier New", ui-monospace, monospace;
+    --serif: Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+  body {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.65;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 48px 24px 32px;
+    text-align: center;
+  }
+  header h1 {
+    font-family: var(--mono);
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    font-size: 1.5em;
+    margin: 0 0 6px;
+  }
+  header p.sub {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.85em;
+    margin: 0;
+  }
+
+  .server-info {
+    max-width: 640px;
+    margin: 24px auto 0;
+    font-family: var(--mono);
+    font-size: 0.85em;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+  }
+  .server-info span b { color: var(--fg); font-weight: normal; }
+
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+  }
+
+  nav.toc {
+    border: 1px solid var(--line);
+    padding: 20px 24px;
+    margin-bottom: 56px;
+    font-family: var(--mono);
+    font-size: 0.85em;
+  }
+  nav.toc p {
+    margin: 0 0 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.9em;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 1.2em;
+    columns: 1;
+  }
+  nav.toc li { margin-bottom: 4px; }
+  nav.toc a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--line); }
+  nav.toc a:hover { border-bottom-color: var(--fg); }
+
+  article h2 {
+    font-family: var(--mono);
+    font-weight: normal;
+    font-size: 1.05em;
+    letter-spacing: 0.03em;
+    border-top: 1px solid var(--line);
+    padding-top: 40px;
+    margin: 56px 0 20px;
+  }
+  article h2:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+
+  article h3 {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.05em;
+    margin: 28px 0 8px;
+    color: var(--fg);
+  }
+
+  article p { margin: 0 0 14px; }
+  article ul { margin: 0 0 14px; padding-left: 1.4em; }
+  article li { margin-bottom: 6px; }
+
+  strong { color: var(--fg); font-weight: bold; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin: 20px 0 30px;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { font-family: var(--mono); font-weight: normal; color: var(--muted); }
+
+  a { color: var(--fg); }
+
+  .preamble {
+    font-style: italic;
+    color: var(--muted);
+    border-left: 2px solid var(--line);
+    padding-left: 18px;
+    margin: 0 0 40px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    text-align: center;
+    padding: 32px 24px 60px;
+    font-family: var(--mono);
+    font-size: 0.8em;
+    color: var(--muted);
+  }
+
+  .back-to-top {
+    display: block;
+    text-align: center;
+    margin: 60px 0 0;
+    font-family: var(--mono);
+    font-size: 0.8em;
+  }
+  .back-to-top a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    header { padding: 36px 16px 24px; }
+    main { padding: 32px 16px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>THE CONSTITUTION OF RIFT SMP</h1>
+  <p class="sub">Ratified charter of the civilization</p>
+  <div class="server-info">
+    <span>Java server IP: <b>play.rift.cool</b></span>
+    <span>Voice: <b>Simple Voice Chat</b> (in-game proximity)</span>
+    <span>This document: <b>mc.rift.cool</b></span>
+  </div>
+</header>
+
+<main>
+
+<nav class="toc">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#preamble">Preamble</a></li>
+    <li><a href="#a1">Article I — Supreme Law, Definitions &amp; Interpretation</a></li>
+    <li><a href="#a2">Article II — Territory, Districts &amp; the House of Government</a></li>
+    <li><a href="#a3">Article III — Citizenship</a></li>
+    <li><a href="#a4">Article IV — Bill of Rights</a></li>
+    <li><a href="#a5">Article V — The Legislative Branch</a></li>
+    <li><a href="#a6">Article VI — The Executive Branch</a></li>
+    <li><a href="#a7">Article VII — The Judicial Branch</a></li>
+    <li><a href="#a8">Article VIII — Election System</a></li>
+    <li><a href="#a9">Article IX — Removal, Impeachment, Recall &amp; Succession</a></li>
+    <li><a href="#a10">Article X — Criminal Justice Framework</a></li>
+    <li><a href="#a11">Article XI — Property, Land &amp; Treasury</a></li>
+    <li><a href="#a12">Article XII — Defense, War &amp; Foreign Relations</a></li>
+    <li><a href="#a13">Article XIII — Emergency Powers</a></li>
+    <li><a href="#a14">Article XIV — Integrity &amp; Anti-Corruption</a></li>
+    <li><a href="#a15">Article XV — Amendments</a></li>
+    <li><a href="#a16">Article XVI — Transition &amp; Ratification</a></li>
+  </ol>
+</nav>
+
+<article>
+
+<p id="preamble" class="preamble">
+We, the players and founders of Rift SMP, in order to establish order, guarantee fairness, protect our lands, separate and limit power, and ensure the stability and prosperity of all who live here, do ordain and establish this Constitution.
+</p>
+
+<h2 id="a1">Article I — Supreme Law, Definitions &amp; Interpretation</h2>
+
+<h3>1.1 Supreme Law</h3>
+<p>This Constitution is the highest legal authority in Rift SMP. No law, decree, order, treaty, or district rule may violate it. Anything that does is void.</p>
+
+<h3>1.2 Definitions</h3>
+<ul>
+  <li><strong>Citizen:</strong> a person registered under Article III. <strong>Active Citizen:</strong> a Citizen who has logged into the server within the last 14 days or is on Declared Leave.</li>
+  <li><strong>Chamber:</strong> the Lawmaker Chamber. <strong>Seated members:</strong> Representatives currently holding office.</li>
+  <li><strong>Simple Majority:</strong> more than 50% of votes cast (abstentions not counted), with quorum present.</li>
+  <li><strong>Supermajority:</strong> at least two-thirds of all seated members, rounded up, whether present or not. Absence never lowers a Supermajority threshold.</li>
+  <li><strong>Term:</strong> a 2-week period between elections.</li>
+  <li><strong>Declared Leave:</strong> absence announced in the Official Record in advance (or within 24 hours in an emergency). Citizens may take up to 14 days; office holders up to 7 days.</li>
+  <li><strong>Official Record:</strong> the civilization's authoritative digital archive (see 1.6).</li>
+  <li><strong>Platform:</strong> the Java Minecraft server at play.rift.cool and any chat/voice platforms it uses. <strong>Server Administration:</strong> the persons who technically operate the Platform.</li>
+</ul>
+
+<h3>1.3 Interpretation</h3>
+<p>The Supreme Court interprets this Constitution. Where the text is genuinely ambiguous, it is read in favor of individual rights and against the expansion of government power.</p>
+
+<h3>1.4 Severability</h3>
+<p>If any provision is struck down, the rest remains in force.</p>
+
+<h3>1.5 Platform Clause</h3>
+<p>Rift SMP operates within the Platform's rules. Server Administration retains technical authority to remove a person from the Platform only for Platform-rule violations (cheating, exploits, hacking, harassment, or breaking server rules). Server Administration shall not use admin, creative, or command powers to influence elections, legislation, trials, or the property of any citizen, except to enforce a final court order or repair Platform damage. Any Server Administration member who holds office must disclose this in the Official Record and recuse from Platform decisions involving their own office or political rivals.</p>
+
+<h3>1.6 The Official Record</h3>
+<p>All laws, court opinions, election results, appointments, treaties, budgets, and decrees are published in a digital Official Record (Discord and/or mc.rift.cool) with public read access and edit history. In-game books, including the Master Constitution Book, are ceremonial copies. If they conflict, the Official Record controls. The Keeper of Records maintains it, and no officeholder may alter or delete an entry except to correct a clerical error, with the correction itself recorded.</p>
+
+<h2 id="a2">Article II — Territory, Districts &amp; the House of Government</h2>
+
+<h3>2.1 Districts</h3>
+<p>Rift SMP is divided into districts. A district is recognized by Simple Majority of the Chamber upon a petition showing at least 3 Citizens with claimed builds inside a defined border. Each district registers its borders in the Official Record. Borders may not overlap; disputes go to the Supreme Court. A district with fewer than 2 Active Citizens for 4 consecutive weeks is merged into its neighbor by Chamber vote.</p>
+
+<h3>2.2 District Autonomy</h3>
+<p>Districts may make local rules on local matters (building style, local bulletin boards, local events), so long as they do not conflict with this Constitution or national law.</p>
+
+<h3>2.3 The House of Government (HOTG)</h3>
+<ul>
+  <li><strong>Floor 2:</strong> Executive Living Quarters (President &amp; Prime Minister).</li>
+  <li><strong>Floor 1:</strong> Executive Offices (President &amp; Prime Minister).</li>
+  <li><strong>Ground Level:</strong> Public Gallery and Petition Hall, open to all Citizens during Chamber sessions and business hours.</li>
+  <li><strong>Floor -1 (Obsidian Vault):</strong> The Lawmaker Chamber.</li>
+  <li><strong>Floor -2:</strong> Official Residences (District Representatives, Presidential Advisor, Military Commander).</li>
+  <li><strong>Perimeter Defense:</strong> The HOTG is enclosed by fortified deepslate walls and guarded at all angles by the Internal Guard.</li>
+</ul>
+
+<h3>2.4 Separate Buildings</h3>
+<p>The Hall of Justice (Supreme Court and Records Archive) and the Treasury Vault are separate structures, so that no branch controls another's premises. The Hall of Justice is guarded by the Sergeant-at-Arms' Guard under the Court's direction while in session, and the Guard may not enter its archives without a Justice's order.</p>
+
+<h3>2.5 Open Government</h3>
+<p>Chamber sessions are public. Closed sessions are allowed only for defense matters or the Secret Bunkers (Article XII), require a Supermajority to enter, and their outcomes (not details) must be recorded.</p>
+
+<h2 id="a3">Article III — Citizenship</h2>
+
+<h3>3.1 Becoming a Citizen</h3>
+<p>Any person who joins the server at play.rift.cool may register with the Keeper of Records, agrees to this Constitution, links their in-game account to the Official Record, and declares a district (or registers as an Unaffiliated Citizen). Citizenship is immediate and free.</p>
+
+<h3>3.2 One Person, One Citizen</h3>
+<p>Each real person may hold one citizenship. Alternate accounts may not vote, hold office, or claim land. Violation is election fraud (Article X).</p>
+
+<h3>3.3 Dormancy</h3>
+<p>A Citizen who does not log in for 30 days without Declared Leave becomes Dormant: they cannot vote, hold office, or claim new land, and they regain full status upon their next login. Their property is protected under 11.4.</p>
+
+<h3>3.4 Loss of Citizenship</h3>
+<p>Citizenship ends only by voluntary renunciation or by a court sentence of permanent banishment (10.5). Guests and visitors, though not Citizens, are protected by Article IV rights that concern safety, due process, and property.</p>
+
+<h2 id="a4">Article IV — Bill of Rights</h2>
+
+<h3>4.1 Property Rights</h3>
+<p>Every Citizen owns their claimed builds, chests, and personal inventory. Stealing, griefing, or unannounced raiding inside civilization borders is illegal. Government may take property only under 11.5.</p>
+
+<h3>4.2 Due Process</h3>
+<p>No Citizen may be banned, exiled, imprisoned, fined, or stripped of gear without a fair trial and conviction under the laws of this Constitution. The only exceptions are the limited emergency detentions in 4.7.</p>
+
+<h3>4.3 Presumption of Innocence</h3>
+<p>The accused is innocent until proven guilty beyond reasonable doubt. The prosecution carries the burden of proof.</p>
+
+<h3>4.4 Trial Rights</h3>
+<p>The accused has the right to: written notice of charges; a speedy trial (within 72 hours of arrest, or within 7 days if not detained); counsel of their choice or the Public Defender; to see the evidence against them; to present evidence and call witnesses; to remain silent; to a public trial; to a jury for felonies; and to one appeal.</p>
+
+<h3>4.5 No Double Jeopardy, No Retroactivity</h3>
+<p>No one may be tried twice for the same act after acquittal or conviction. No law may punish an act that was legal when it was done, and no law may declare a specific person or group guilty without trial.</p>
+
+<h3>4.6 Cruel Punishment Forbidden</h3>
+<p>Punishments must be proportionate. Killing a Citizen as punishment, spawn-camping, repeated deaths, mob-trapping, or unlivable imprisonment are forbidden.</p>
+
+<h3>4.7 Search &amp; Seizure</h3>
+<p>No search of a Citizen's build, chest, or inventory, and no seizure of items, without a warrant signed by a Justice on evidence of probable cause and naming the place and items. Exceptions: hot pursuit of a suspect in the act, and imminent destruction of evidence, both of which must be reported to the Court within 24 hours. A suspect may be held without a warrant for no more than 12 hours.</p>
+
+<h3>4.8 Speech, Assembly, Petition</h3>
+<p>All Citizens may speak freely, assemble, attend public debates, and petition the Chamber without government reprisal. Freedom of speech does not protect threats, doxxing, real-life harassment, or incitement to grief or violence.</p>
+
+<h3>4.9 Equal Protection</h3>
+<p>The law applies equally to every Citizen, including officeholders. No one may be discriminated against based on nationality, religion, playtime, skill, or membership in any group.</p>
+
+<h3>4.10 Self-Defense</h3>
+<p>Citizens may defend their property and persons against trespassers and attackers with force proportionate to the threat.</p>
+
+<h3>4.11 Privacy</h3>
+<p>Government may not monitor Citizens' private communications, use x-ray or tracking tools against them, or use admin or command powers to spy on them. Violation by an officeholder is an impeachable offense.</p>
+
+<h3>4.12 Right to Vote and to Serve</h3>
+<p>Every Active Citizen may vote, and every eligible Citizen may run for office (Article VIII).</p>
+
+<h3>4.13 Right to Leave</h3>
+<p>Any Citizen may leave the civilization at any time with their belongings.</p>
+
+<h3>4.14 Right to Information</h3>
+<p>All government records except closed-session details (2.5) and Secret Bunker coordinates (12.6) are open to any Citizen through the Official Record.</p>
+
+<h3>4.15 Rights are Non-Suspendable</h3>
+<p>No emergency, war, or law may suspend this Article.</p>
+
+<h2 id="a5">Article V — The Legislative Branch (Lawmaker Chamber)</h2>
+
+<h3>5.1 Composition</h3>
+<p>Every recognized district elects two Representatives. The Chamber sits on Floor -1 of the HOTG.</p>
+
+<h3>5.2 Terms &amp; Staggering</h3>
+<p>A Representative serves a 4-week term (two election cycles). Each district's two seats are staggered so one seat is elected in each election, ensuring the Chamber never turns over completely. When a district is newly created, both seats are elected at once, with one seat serving an initial 2-week term to enter the stagger.</p>
+
+<h3>5.3 Eligibility</h3>
+<p>A Representative must be an Active Citizen for at least 14 days and a resident of the district they represent (Unaffiliated Citizens may run in any district that accepts them by petition).</p>
+
+<h3>5.4 Incompatibility</h3>
+<p>No one may simultaneously be a Representative and President, Justice, Attorney General, Military Commander, Sergeant-at-Arms, Treasurer, or Election Commissioner.</p>
+
+<h3>5.5 Prime Minister as Presiding Officer</h3>
+<p>After each election, the Chamber elects a Prime Minister from its own members by Simple Majority. The PM presides over the Chamber, announces bills, calls votes, and delivers passed laws to the President. The PM has a vote as a Representative but no tie-breaking power.</p>
+
+<h3>5.6 Law Creation</h3>
+<p>Any Representative may draft and submit a bill. Bills must address a single subject (no riders) and be published in the Official Record at least 24 hours before the vote, except in a declared emergency.</p>
+
+<h3>5.7 Quorum &amp; Voting</h3>
+<p>A quorum is more than half of all seated Representatives. A bill passes with a Simple Majority, provided at least 3 aye votes are cast. A tie fails; the bill may be resubmitted after 24 hours. Votes are recorded publicly in the Official Record by name.</p>
+
+<h3>5.8 Conflict of Interest</h3>
+<p>A Representative may not vote on a bill that specifically names them, grants them a personal benefit, or concerns punishment or reward of a person they are in a declared dispute with. The recusal must be declared and recorded.</p>
+
+<h3>5.9 Attendance</h3>
+<p>A Representative absent from 3 consecutive sessions without Declared Leave forfeits their seat. A vacancy is filled by a special election within 7 days.</p>
+
+<h3>5.10 Delivery to Executive</h3>
+<p>Once passed, the PM delivers the law within 12 hours to the President and records the delivery in the Official Record.</p>
+
+<h3>5.11 PM Inactivity Override</h3>
+<p>If the PM fails to act or log in for 48 hours, a Supermajority may bypass the PM and deliver the law directly to the President. After 72 hours of PM inactivity, the Chamber may elect an Acting PM by Simple Majority.</p>
+
+<h3>5.12 Public Initiative</h3>
+<p>A petition signed by 25% of Active Citizens forces the Chamber to vote on a proposed bill within 7 days. If the Chamber rejects it, the petitioners may submit it to a public vote, where it passes with 60% in favor, and then goes to the President under Article VI.</p>
+
+<h3>5.13 Investigations</h3>
+<p>The Chamber may summon officials to answer questions publicly and may audit any budget, appointment, or administrative act. Officials must comply; refusal is grounds for impeachment.</p>
+
+<h2 id="a6">Article VI — The Executive Branch</h2>
+
+<h3>6.1 The President</h3>
+<p>The President executes the laws, leads the government, and represents Rift SMP externally.</p>
+
+<h3>6.2 Presidential Assent</h3>
+<p>The President reviews every law passed by the Chamber and must sign or veto within 72 hours of delivery. If the President does neither, the law becomes official automatically. A signed or automatic law is permanently recorded in the Master Constitution Book and the Official Record.</p>
+
+<h3>6.3 Veto &amp; Override</h3>
+<p>A vetoed bill must be returned with a written reason. The Chamber may override the veto by a Supermajority.</p>
+
+<h3>6.4 Public Promulgation</h3>
+<p>Within 24 hours of a law becoming official, the President shall publish it on all official bulletin boards in every district, and in the Official Record, together with its penalties. A law takes effect 24 hours after publication.</p>
+
+<h3>6.5 Executive Orders</h3>
+<p>The President may issue executive orders to carry out existing laws. Orders may not create crimes, taxes, or penalties; may not change this Constitution or override a law; and lapse after 7 days unless ratified by the Chamber. The Court may strike down any order.</p>
+
+<h3>6.6 Appointments</h3>
+<p>The President nominates, and the Chamber confirms by Simple Majority: Military Commander, Attorney General, Treasurer, Justices (see 7.2), and the Keeper of Records. The President appoints the Presidential Advisor without confirmation. The PM nominates, and the Chamber confirms, the Sergeant-at-Arms. Officers may be dismissed by the appointing authority, but dismissals must be recorded with a reason.</p>
+
+<h3>6.7 Presidential Advisor</h3>
+<p>The Advisor has no vote and no legal authority, and advises the President and may serve as Chief Envoy. Ex-Presidents who have reached their term limit are eligible for the Advisor role immediately if vacant.</p>
+
+<h3>6.8 Pardons</h3>
+<p>The President may pardon or commute sentences after conviction, but may not pardon themselves, their own appointees for offenses committed in office, or any offense against the Constitution's election or impeachment provisions.</p>
+
+<h3>6.9 Term Length &amp; Limits</h3>
+<ul>
+  <li>Each presidential term lasts 2 weeks.</li>
+  <li>A President may serve a maximum of 2 consecutive terms, after which they must sit out at least 1 term.</li>
+  <li>A partial term of more than half its length counts as a full term. Time as Acting President beyond 7 days counts as a term.</li>
+  <li><strong>Founder Term:</strong> Rift SMP's founder serves as the first President (2 weeks), and this counts as their first term. The Founder holds no special powers afterward.</li>
+  <li><strong>Ex-Presidents</strong> at their maximum terms become Citizens with no special powers other than the Advisor eligibility above.</li>
+</ul>
+
+<h3>6.10 The Sergeant-at-Arms &amp; Internal Guard</h3>
+<p>The Sergeant-at-Arms commands the Internal Guard, which secures the HOTG, the Treasury Vault, and the Hall of Justice, and carries out arrests under lawful warrants. The Guard reports to the Sergeant-at-Arms and is independent of the external military. The Guard may not arrest without a warrant except under 4.7, may not use force beyond what the situation demands, and may not interfere with elections or Chamber sessions.</p>
+
+<h3>6.11 Attorney General &amp; Public Defender</h3>
+<p>The Attorney General prosecutes offenses in the name of Rift SMP, but may not prosecute for political reasons; decisions not to prosecute must be recorded. The Court appoints a Public Defender who represents any accused person who requests one.</p>
+
+<h3>6.12 Term of Appointed Officers</h3>
+<p>Appointed officers serve until their appointing official's term ends and are automatically reconfirmed by the next appointing official or replaced within 7 days. Justices are exempt (7.2).</p>
+
+<h2 id="a7">Article VII — The Judicial Branch</h2>
+
+<h3>7.1 The Supreme Court</h3>
+<p>Judicial power is vested in the Supreme Court of three Justices, who sit in the Hall of Justice. The Court hears all trials, appeals, and constitutional disputes, and may strike down any law, order, or act that violates this Constitution.</p>
+
+<h3>7.2 Appointment &amp; Tenure</h3>
+<p>Justices are nominated by the President and confirmed by a Supermajority of the Chamber. Justices serve for 8 weeks and may be reappointed once. A Justice may only be removed by impeachment (Article IX). Justices may not hold any other office, endorse candidates, or campaign. A Justice must recuse from any case in which they have a personal interest or relationship.</p>
+
+<h3>7.3 Trials</h3>
+<ul>
+  <li><strong>Infractions and misdemeanors:</strong> tried before one Justice, appealable to the full Court.</li>
+  <li><strong>Felonies:</strong> tried before a Justice and a jury of 5 Citizens drawn by lot from Active Citizens who are not parties, witnesses, or officeholders. Conviction requires a unanimous verdict of 4 of 5 jurors at minimum, and permanent banishment requires all 5.</li>
+  <li><strong>Appeals:</strong> heard by the two Justices who did not hear the trial (or a replacement panel if recused). Their decision is final.</li>
+</ul>
+
+<h3>7.4 Warrants</h3>
+<p>A Justice issues search and arrest warrants (4.7) and reviews all emergency detentions within 24 hours.</p>
+
+<h3>7.5 Judicial Review</h3>
+<p>Any Citizen may bring a challenge to a law or act as unconstitutional. The Court rules within 7 days, and its written opinion is published in the Official Record. Rulings on the Constitution bind all branches. The Chamber may respond to a statutory interpretation by passing a clarifying law, but may not override a constitutional ruling except by amendment.</p>
+
+<h3>7.6 Independence</h3>
+<p>No officeholder may pressure, threaten, or bribe a Justice or juror. Doing so is a felony and an impeachable offense.</p>
+
+<h3>7.7 Court Vacancy</h3>
+<p>If fewer than 3 Justices are seated, the Chamber must confirm a replacement within 7 days. Until then, the Court may sit with 2 Justices, and a tie means the lower ruling stands.</p>
+
+<h2 id="a8">Article VIII — Election System</h2>
+
+<h3>8.1 Schedule</h3>
+<p>Elections occur every 2 weeks on a fixed day and time set by the Electoral Commission and published at least 7 days in advance. The schedule may be changed only by a Court order for Platform outages, and no election may be delayed more than 48 hours.</p>
+
+<h3>8.2 The Electoral Commission</h3>
+<p>A Commission of three Active Citizens, chosen by lot each cycle from those who are not candidates, officeholders, or Representatives, runs the election, verifies Citizens' identities (3.2), counts votes, and publishes results in the Official Record. Commissioners may not campaign.</p>
+
+<h3>8.3 Candidate Requirements</h3>
+<p>A President candidate must be an Active Citizen for at least 14 days, have no felony conviction in the last 4 weeks, and complete a Public Debate &amp; Civ Knowledge Quiz before Election Day. The Quiz is drawn at random from a public pool of at least 50 questions on this Constitution, written by the Electoral Commission, with a passing score of 70%. Results are public.</p>
+
+<h3>8.4 Weighted Voting</h3>
+<p>The presidency is decided by a combined weighted score:</p>
+<ul>
+  <li><strong>Public Popular Vote: 60%.</strong> One Active Citizen, one secret ballot.</li>
+  <li><strong>Lawmaker Chamber Vote: 40%.</strong> Cast by the outgoing Chamber before the new Representatives are seated. A Representative who is themselves a candidate may not vote.</li>
+</ul>
+<p>Each candidate's score is (60% × share of public votes) + (40% × share of Chamber votes). The highest score wins. A tie is broken by the higher public vote share, then by a runoff within 48 hours.</p>
+
+<h3>8.5 Turnout</h3>
+<p>If fewer than 25% of Active Citizens vote, voting is extended once for 24 hours, after which the result stands.</p>
+
+<h3>8.6 Representative Elections</h3>
+<p>District elections for Chamber seats occur on the same day across all districts (5.2).</p>
+
+<h3>8.7 Campaign Rules</h3>
+<p>Vote-buying, trading items or resources for votes, threats, impersonation, false claims about voting procedure, and use of government resources for campaigning are election fraud. Debates must give every candidate equal time. Rule Freeze: election rules may not be changed within 7 days before Election Day.</p>
+
+<h3>8.8 Certification &amp; Disputes</h3>
+<p>Results are certified by the Commission within 12 hours. Any Citizen may challenge results before the Court within 48 hours. The Court may order a recount or a new election, but only for the affected race.</p>
+
+<h3>8.9 Transition</h3>
+<p>The new President takes office at a set time after certification. The outgoing officials must hand over records, keys, and chest access within 12 hours.</p>
+
+<h2 id="a9">Article IX — Removal, Impeachment, Recall &amp; Succession</h2>
+
+<h3>9.1 Impeachable Offenses</h3>
+<p>Any officeholder may be impeached for: violating the Constitution, abuse of power, corruption, misuse of admin or command powers, election fraud, treason, obstructing the Court, or inactivity (over 72 hours without Declared Leave).</p>
+
+<h3>9.2 Process</h3>
+<p>Two Representatives may file articles of impeachment. The Chamber votes: a Supermajority impeaches. The officeholder is immediately suspended and an Acting officer named under 9.5. The trial is held before the Court and a jury of 7 Citizens drawn by lot, and conviction requires 5 of 7 jurors. An impeached Justice's trial is heard by a panel of the jury plus the two other Justices. Upon conviction, the officeholder is removed and disqualified from office for up to 2 terms.</p>
+
+<h3>9.3 Recall of Representatives</h3>
+<p>A petition by 50% of a district's Active Citizens triggers a recall vote in that district within 7 days. A Simple Majority of that district's voters recalls the Representative.</p>
+
+<h3>9.4 Voluntary Resignation</h3>
+<p>Resignation is effective when recorded in the Official Record. Time served counts toward term limits (6.9).</p>
+
+<h3>9.5 Succession</h3>
+<p>If the President dies (permanently leaves), resigns, is removed, or is inactive for over 72 hours without Declared Leave, the Prime Minister becomes Acting President immediately. If the PM is unavailable, the Chamber elects an Acting President from its members by Simple Majority. A special election is held within 7 days. An Acting President may not veto laws or appoint Justices, and may not serve for more than 14 days without an election.</p>
+
+<h3>9.6 Caretaker Government</h3>
+<p>If every executive office is vacant, the Court appoints a caretaker from among Active Citizens to run an election within 7 days. The caretaker has no other powers.</p>
+
+<h2 id="a10">Article X — Criminal Justice Framework</h2>
+
+<h3>10.1 Classes of Offenses</h3>
+<p>The Chamber defines offenses by law within these classes:</p>
+<ul>
+  <li><strong>Infractions:</strong> minor offenses (spam, minor trespass, unlicensed building on public land).</li>
+  <li><strong>Misdemeanors:</strong> moderate offenses (minor theft, minor griefing, unannounced PvP inside borders).</li>
+  <li><strong>Felonies:</strong> serious offenses (grand theft, major griefing, Treasury theft, murder-for-loot, treason, election fraud, bribing officials, abuse of admin powers, obstruction of justice).</li>
+</ul>
+
+<h3>10.2 Maximum Penalties</h3>
+<ul>
+  <li><strong>Infractions:</strong> warning; fine up to the value of the harm plus 25%.</li>
+  <li><strong>Misdemeanors:</strong> restitution; fine; imprisonment up to 12 hours; temporary exile up to 72 hours.</li>
+  <li><strong>Felonies:</strong> restitution; fine; imprisonment up to 24 hours; temporary exile up to 14 days; permanent banishment under 10.5.</li>
+</ul>
+
+<h3>10.3 Restitution First</h3>
+<p>A convicted person must first repay the victim for the harm. Confiscation of gear may not exceed the restitution owed.</p>
+
+<h3>10.4 Imprisonment Standards</h3>
+<p>Sentences count real hours, whether online or offline. Prisoners must have access to food, a bed, and a chest for personal items, and may not be killed, tormented, or denied access to their lawyer. Detention before trial counts toward the sentence and is capped at 24 hours unless the Court extends it in writing.</p>
+
+<h3>10.5 Permanent Banishment</h3>
+<p>Removal of a Citizen's citizenship and territory rights requires a felony conviction by a unanimous 5-of-5 jury and Court approval. It is reviewable after 8 weeks. Banishment applies to the civilization only and does not itself remove a person from the Platform (1.5).</p>
+
+<h3>10.6 Statute of Limitations</h3>
+<p>Misdemeanors and infractions must be charged within 14 days, and felonies within 8 weeks, of the offense or its discovery.</p>
+
+<h3>10.7 Officials</h3>
+<p>Officeholders are subject to the same laws, and abuse of office is an aggravating factor for sentencing.</p>
+
+<h2 id="a11">Article XI — Property, Land &amp; Treasury</h2>
+
+<h3>11.1 Land Claims</h3>
+<p>Land is claimed by registering coordinates and borders with the Keeper of Records. Claims must be reasonable in size as set by law and may not enclose shared roads, waterways, or public builds.</p>
+
+<h3>11.2 Public Land</h3>
+<p>Unclaimed land is public. Anyone may use it, but nobody may erect permanent, exclusionary builds without a claim.</p>
+
+<h3>11.3 Disputes</h3>
+<p>Land disputes go to the Supreme Court. Griefed or stolen builds are restored under a restitution order.</p>
+
+<h3>11.4 Inactivity &amp; Abandonment</h3>
+<p>Property of a Dormant Citizen is protected. If a Citizen has no login and no Declared Leave for 60 days, the Keeper of Records posts public notice, and if there is still no response after another 14 days, the claim is considered abandoned and returned to public land. Items in chests are preserved for the owner for 30 further days and then may be transferred to the Treasury. A returning Citizen may petition the Court for compensation.</p>
+
+<h3>11.5 Eminent Domain</h3>
+<p>The civilization may take claimed land for essential public works only by law, with fair compensation in items or land of equal value, prior notice of 7 days, and a right to appeal.</p>
+
+<h3>11.6 The Treasury</h3>
+<p>The Treasury Vault holds shared resources. The Treasurer manages it under the budget. All deposits and withdrawals are logged in the Official Record. No officeholder may take from the Treasury for personal use, and doing so is Treasury theft (a felony).</p>
+
+<h3>11.7 Budget</h3>
+<p>Each term, the Chamber passes a budget authorizing spending. No spending is allowed without one. Unplanned spending above 10% of the Treasury requires a Chamber vote.</p>
+
+<h3>11.8 Taxes</h3>
+<p>The Chamber may impose taxes or fees only by law, uniformly applied to all Citizens, with a cap of 10% of any item or resource class per term. No taxation may be so heavy that it prevents a Citizen from living in the civilization. Officeholders may not exempt themselves.</p>
+
+<h3>11.9 Audit</h3>
+<p>The Chamber (or a Court-appointed Citizen auditor) may audit the Treasury at any time. Findings are published.</p>
+
+<h2 id="a12">Article XII — Defense, War &amp; Foreign Relations</h2>
+
+<h3>12.1 Military Command</h3>
+<p>The Military Commander leads external defense, war strategy, and outer guard posts, and answers to the President and the Chamber. The military may not enforce internal law, interfere in elections, or be used against Citizens.</p>
+
+<h3>12.2 Voluntary Service</h3>
+<p>Military service is voluntary. No Citizen may be forced to fight.</p>
+
+<h3>12.3 Declaring War</h3>
+<p>War against another civilization or group requires the President's declaration and a Supermajority of the Chamber. The declaration is published in the Official Record and given to the other party at least 48 hours before hostilities.</p>
+
+<h3>12.4 Defense</h3>
+<p>The Military Commander may respond immediately to an attack on the civilization or its Citizens, and must notify the Chamber within 12 hours. A defensive response beyond 72 hours needs a war declaration.</p>
+
+<h3>12.5 Rules of War</h3>
+<p>Wars target military and hostile forces. Non-combatant Citizens, unrelated builds, and captured prisoners are not to be griefed or tormented. Peace is made by treaty (12.7).</p>
+
+<h3>12.6 Secret Bunkers</h3>
+<p>Emergency bunkers are classified top-secret. Their location is split across three keys held by the President, the PM, and the Military Commander. Access requires any two of the three keyholders acting together (dual-key authentication, using separate portal codes and location markers), so no single person can access or betray a bunker. When a keyholder leaves office, the remaining two keyholders must rotate the keys, relocating or resetting that component within 48 hours. A sealed record of the bunker's existence may be verified by the Chief Justice in camera, without revealing coordinates.</p>
+
+<h3>12.7 Treaties &amp; Alliances</h3>
+<p>The President negotiates treaties. Treaties take effect with a Simple Majority of the Chamber, and treaties ending a war, giving away land, or joining an alliance require a Supermajority. A treaty may not violate this Constitution.</p>
+
+<h2 id="a13">Article XIII — Emergency Powers</h2>
+
+<h3>13.1 State of Emergency</h3>
+<p>In case of invasion, major disaster, or mass griefing, the President, with the PM's concurrence, may declare a State of Emergency for up to 72 hours. Extensions require a Simple Majority of the Chamber in 72-hour increments, and beyond 14 days total a Supermajority.</p>
+
+<h3>13.2 Limits</h3>
+<p>During an emergency: the Bill of Rights (Article IV) remains in force; elections, term limits, and the Court continue to operate; this Constitution cannot be amended; and any emergency act is reviewable by the Court afterward.</p>
+
+<h3>13.3 Accountability</h3>
+<p>All emergency acts are recorded. Abuse of emergency power is an impeachable offense.</p>
+
+<h2 id="a14">Article XIV — Integrity &amp; Anti-Corruption</h2>
+
+<h3>14.1 Bribery Forbidden</h3>
+<p>Offering or accepting items, land, or favors in exchange for votes, appointments, rulings, or pardons is a felony.</p>
+
+<h3>14.2 Conflicts of Interest</h3>
+<p>Officeholders must disclose in the Official Record any personal interest in matters they decide and recuse themselves.</p>
+
+<h3>14.3 Use of Powers</h3>
+<p>No officeholder may use admin, creative, command, or exploit tools to gain personal advantage or to affect government business.</p>
+
+<h3>14.4 Cooling-Off</h3>
+<p>Justices and the Attorney General may not run for President or the Chamber in the term right after they leave office.</p>
+
+<h3>14.5 Whistleblower Protection</h3>
+<p>Any Citizen who reports corruption in good faith is protected from retaliation. Retaliation is a misdemeanor and an impeachable offense.</p>
+
+<h3>14.6 Transparency</h3>
+<p>The Official Record must show, at minimum: every vote, every appointment, every budget line, every pardon, every executive order, and every court opinion.</p>
+
+<h2 id="a15">Article XV — Amendments</h2>
+
+<h3>15.1 Ordinary Amendments</h3>
+<p>To amend any Article of this Constitution, a proposed amendment requires (1) a Supermajority of the Chamber, (2) approval of the President, and (3) a Simple Majority (over 50%) of Active Citizens voting in a public referendum.</p>
+
+<h3>15.2 Entrenched Provisions</h3>
+<p>Amending Article IV (Bill of Rights), Article VII (Judicial independence), Article VIII (Elections), the term limits in 6.9, or this Article requires a three-quarters Supermajority of the Chamber, Presidential approval, and two-thirds of the public vote.</p>
+
+<h3>15.3 Presidential Block</h3>
+<p>If the President refuses to approve an amendment, the Chamber may resubmit it after the next election.</p>
+
+<h3>15.4 Restrictions</h3>
+<p>No amendment may be proposed during a State of Emergency or within 7 days of an election, or take effect retroactively. An amendment may not abolish the Bill of Rights, the Judiciary, or the public vote.</p>
+
+<h3>15.5 Publication</h3>
+<p>Passed amendments are recorded in the Official Record and take effect 24 hours after certification.</p>
+
+<h2 id="a16">Article XVI — Transition &amp; Ratification</h2>
+
+<h3>16.1 Ratification</h3>
+<p>This Constitution takes effect when approved by a majority of Active Citizens and signed by the Founder.</p>
+
+<h3>16.2 First Government</h3>
+<p>The Founder serves as first President (6.9). Within 14 days, the first Chamber is elected, and the first PM chosen. The Founder nominates the first three Justices, who are confirmed by the first Chamber. Until then the Founder acts under this Constitution without exception to its limits.</p>
+
+<h3>16.3 Existing Rights and Property</h3>
+<p>All claims and builds registered before ratification are honored.</p>
+
+<div class="back-to-top"><a href="#preamble">back to top</a></div>
+
+</article>
+
+</main>
+
+<footer>
+  Rift SMP — play.rift.cool (Java) — Simple Voice Chat enabled — this constitution hosted at mc.rift.cool
+</footer>
+
+</body>
+</html>
